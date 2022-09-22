@@ -5,37 +5,43 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-
-
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
 	<script src="https://kit.fontawesome.com/d2a70f8ad9.js" crossorigin="anonymous"></script>
-
-
 	<script src="https://kit.fontawesome.com/44f557ccce.js"></script>
-
-	<script src="script.js" defer></script>
 </head>
 <body>
 
 	<!-- Início Menu -->
-	<header>
+	<header class="menu">
+		<nav>
 		<ul>
 			<li><a href="">Início</a></li>
 			<li><a href="#l3">Projetos</a></li>
 			<li><a href="#l4">Contato</a></li>
 		</ul>
+
+			<div class="dark-mode">
+				<input type="checkbox" class="checkbox" id="chk" />
+				<label class="label" for="chk">
+				<i class="fas fa-moon"></i>
+        		<i class="fas fa-sun"></i>
+        		<div class="ball"></div>
+      			</label>
+			</div>
+		</nav>
 	</header>
 	<!-- Fim Menu -->
-
 
 	<!-- Início Descrição -->
 	<section id="" class="introduction">
 			<h1 id="text">Wesley Marques</h1>
-			<h2><strong>Desenvolvedor Front-End</strong></h2>
+			<h2><strong>Desenvolvedor Full Stack</strong></h2>
 
 		<div class="box">
-			<img src="imgs/wesley.jpg" id="wesley">
+			<img src="imgs/wesley.jpg">
 		</div>
 
 		<div class="desc-sobre">
@@ -45,9 +51,9 @@
     <!-- Fim Descrição -->
 
     <section class="skills" >
-	    <h4>Habilidades</h4>
+	    <h4>Hard Skills</h4>
 	    <h2>Clique na Tecnologia</h2>
-	  <div class="tecnologias-container">
+	  <div class="hard-skills">
 	    <div class="icons">
 	    	<div class="desc-skill">
 	    	<i class="fa-brands fa-html5"></i>
@@ -73,7 +79,7 @@
 	    	<br>
 	    	<p>REACT</p>
 	    	</div>
-		<div class="desc-skill">	
+	    	<div class="desc-skill">	
 	    	<i class="fa-brands fa-php"></i>
 	    	<br>
 	    	<br>
@@ -81,30 +87,31 @@
 	    	</div>
 	    </div>
 
-	    <div class="tooltip">
+	    <div class="text-hidden">
 	    	<h4>HTML</h4>
 	    	<p>HTML é uma das linguagens que utilizamos para desenvolver websites</p>
 	    </div>
 
-	    <div class="tooltip">
+	    <div class="text-hidden">
 	    	<h4>CSS</h4>
 	    	<p>CSS é usado para estilizar elementos escritos em uma linguagem de marcação como HTML</p>
 	    </div>
 
-	    <div class="tooltip">
+	    <div class="text-hidden">
 	    	<h4>JAVASCRIPT</h4>
 	    	<p>JavaScript é uma linguagem de programação que permite a você implementar itens complexos em páginas web </p>
 	    </div>
 
-	    <div class="tooltip">
+	    <div class="text-hidden">
 	    	<h4>REACT</h4>
 	    	<p>React JS é uma biblioteca JavaScript para a criação de interfaces de usuário — ou UI (user interface). </p>
 	    </div>
-		  
-	    <div class="tooltip">
+
+	      <div class="text-hidden">
 	    	<h4>PHP</h4>
 	    	<p>O PHP é uma linguagem de script open source de uso geral, adequada para o desenvolvimento web e que pode ser embutida dentro do HTML. </p>
 	    </div>
+
 
 
 	  </div> 
@@ -126,12 +133,12 @@
 			</div>
 
 			<div class="projetos-container">
-				<img src="https://images8.alphacoders.com/927/thumb-1920-927077.jpg">
-				<h2>ReactJS</h2>
-				<p>projeto em construção...</p>
+				<img src="imgs/ponto.jpg">
+				<h2>undefined</h2>
+				<p>Site em construção...</p>
 				<div class="links">
 					<a href="https://github.com/WesleyMarques329">GitHub</a>
-					<a href="https://wesleymarques329.github.io/ecommerceReactJS/">Visualizar</a>
+					<a href="">Visualizar</a>
 				</div>
 			</div>
 
@@ -178,6 +185,40 @@
 		</div>
 	</section>
 		
+	<div class="wrapper">
+		<h3 class="header-message">Me envie uma Messagem</h3>
+		<form action="#">
+			<div class="dbl-field">
+				<div class="field">
+					<input type="text" name="name" placeholder="Nome">
+					<i class="fas fa-user"></i>
+				</div>
+				<div class="field">
+					<input type="text" name="email" placeholder="E-mail">
+					<i class="fas fa-envelope"></i>
+				</div>
+				<div class="field">
+					<input type="text" name="phone" placeholder="Celular">
+					<i class="fas fa-phone"></i>
+				</div>
+				<div class="field">
+					<input type="text" name="website" placeholder="Site">
+					<i class="fas fa-globe"></i>
+				</div>
+			</div>
+			<div class="message">
+				<textarea placeholder="Escreva sua Messagem" name="message"></textarea>
+				<i class="material-icons">message</i>
+			</div>
+			<div class="button-area">
+				<button type="submit">Enviar Messagem</button>
+				<span>Enviando sua messagem...</span>
+			</div>
+		</form>
+	</div>
+
+	<script src="script.js"></script>
+	<script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
 
 	<!-- Início Rodapé -->
 	<footer>
