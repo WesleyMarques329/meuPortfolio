@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 * {
 	margin: 0 auto;
@@ -13,7 +14,63 @@ body {
 	background: linear-gradient(to right, rgba(135,206,250), rgba(65,105,225));
 	padding-top: 120px;
 	width: 100%;
+	transition: background 0.2s linear;
+}
 
+body.dark {
+	background: #4F4F4F;
+}
+
+
+.dark-mode {
+	position: relative;
+	left: 80%;
+
+}
+.checkbox {
+	opacity: 0;
+	position: absolute;
+}
+
+.label {
+	background-color: #4F4F4F;
+	border: 1px solid white;
+	border-radius: 50px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding:  5px;
+	position: relative;
+	height: 15px;
+	width: 50px;
+	transform: scale(1.5);
+}
+
+.label .ball {
+	background-color: #fff;
+	border-radius: 50%;
+	position: absolute;
+	top: -1px;
+	left: 5px;
+	height: 15px;
+	width: 15px;
+	transform: translateX(0px);
+	transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+	transform: translateX(24px);
+}
+
+.fa-moon {
+	font-size: 12px;
+	color: #A9A9A9;
+}
+
+.fa-sun {
+	font-size: 12px;
+	color: #FFD700;
 }
 
 header {
@@ -26,7 +83,7 @@ header {
 	align-items: center;
 	width: 100%;
 	height: 40px;
-	background-color: #191970;
+	background-color: #1C1C1C;
 	z-index: 10;
 }
 
@@ -53,6 +110,12 @@ header ul li a {
 header ul li a:hover,
 header ul li a.ativo {
 	color: #00CED1;
+}
+
+nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .start {
@@ -88,13 +151,13 @@ header ul li a.ativo {
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.tooltip {
+.text-hidden {
 	display: none;
 }
 
-.tooltip.ativo {
+.text-hidden.ativo {
     display: block;
-    background-color: rgba(65,105,225);
+    background-color: #4F4F4F;
     border: 1px solid black;
     width: 100%;
     max-width: 500px;
@@ -104,7 +167,7 @@ header ul li a.ativo {
     font-family: 'Montserrat', sans-serif;
 }
 
-.tooltip p {
+.text-hidden p {
 	color: snow;
 }
 h4 {
@@ -130,19 +193,131 @@ h4 {
 	
 }
 
-section img#earth{
-	mix-blend-mode: luminosity;
-	
-	}
-
-section img#wesley{
-	height: 200px;
-	width: 200px;
-	border-radius: 150px;
-	z-index: 2;
-
+.header-message {
+  font-size: 22px;
+  font-weight: 600;
+  padding: 20px 30px;
+  border-bottom: 1px solid #ccc;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
 }
 
+.wrapper{
+  width: 715px;
+  background: #fff;
+  border-radius: 5px;
+  border: 0.5px solid black;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.05);
+}
+
+.wrapper form {
+  margin: 35px 30px;
+}
+
+.wrapper form.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+form .dbl-field {
+  display: flex;
+  margin-bottom: 25px;
+  justify-content: space-between;
+}
+.dbl-field .field {
+  height: 50px;
+  display: flex;
+  position: relative;
+  width: calc(100% / 2 - 13px);
+}
+
+.wrapper form i{
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  color: #ccc;
+  font-size: 17px;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+form .field input,
+form .message textarea{
+  font-family: 'IBM Plex Mono', monospace;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  padding: 0 18px 0 48px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.field input::placeholder,
+.message textarea::placeholder{
+  color: #ccc;
+}
+
+.field input:focus,
+.message textarea:focus{
+  padding-left: 47px;
+  border: 2px solid #0D6EFD;
+}
+
+.field input:focus ~ i,
+.message textarea:focus ~ i{
+  color: #0D6EFD;
+}
+
+form .message{
+  position: relative;
+}
+form .message i{
+  top: 30px;
+  font-size: 20px;
+}
+
+form .message textarea{
+  min-height: 130px;
+  max-height: 230px;
+  max-width: 100%;
+  min-width: 100%;
+  padding: 15px 20px 0 48px;
+}
+
+form .message textarea::-webkit-scrollbar{
+  width: 0px;
+}
+
+.message textarea:focus{
+  padding-top: 14px;
+}
+form .button-area{
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+}
+
+.button-area button{
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 13px 25px;
+  background: #0D6EFD;
+  transition: background 0.3s ease;
+}
+
+button-area button:hover{
+  background: #025ce3;
+}
+.button-area span{
+  font-size: 17px;
+  margin-left: 30px;
+  display: none;
+}
 
 h2 {
 	font-family: 'Josefin Sans', sans-serif;
@@ -189,21 +364,13 @@ h2 {
 	height: 100%;
 }
 
-button {
-	width: 120px;
-	height: 60px;
-	border-radius: 10px;
-	margin-top: 30px;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bold;
-	font-size: 15px;
-}	
+	
 
 footer {
     bottom: 0px;
     height: 140px;
     width: 100%;
-    background-color: #191970;
+    background-color: #1C1C1C;
 }
 
 .skills {
@@ -352,7 +519,7 @@ footer {
 	border-radius: 4px;
 	font-size: 21px;
 	border: 2px solid black;
-	background-color: #0000CD;
+	background-color: #1C1C1C;
 	font-family: "Montserrat", sans-serif;
 }
 
@@ -377,6 +544,7 @@ footer {
 	grid-template-columns: 300px 300px 300px;
 	justify-content: center;
 	text-align: center;
+	gap: 60px;
 	padding: 20px;
 	padding-top: 80px;
 }
@@ -392,6 +560,8 @@ footer {
 	padding-top: 30px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 	width: 300px;
+	padding: 20px;
+	height: 150px;
 	border-radius: 10px;
 }
 
@@ -503,5 +673,38 @@ footer {
 		text-align: center;
 	}
 }
+
+@media (max-width: 999px){
+  .wrapper header{
+    text-align: center;
+  }
+  .wrapper form{
+    margin: 35px 20px;
+  }
+  form .dbl-field{
+    flex-direction: column;
+    margin-bottom: 0px;
+  }
+  form .dbl-field .field{
+    width: 100%;
+    height: 45px;
+    margin-bottom: 20px;
+  }
+  form .message textarea{
+    resize: none;
+  }
+  form .button-area{
+    margin-top: 20px;
+    flex-direction: column;
+  }
+  .button-area button{
+    width: 100%;
+    padding: 11px 0;
+    font-size: 16px;
+  }
+  .button-area span{
+    margin: 20px 0 0;
+    text-align: center;
+  }
 
 }
