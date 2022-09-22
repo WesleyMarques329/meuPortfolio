@@ -1,5 +1,43 @@
-const tecnologias = document.querySelectorAll('.tecnologias-container i');
-const tooltip = document.querySelectorAll('.tooltip');
+const form = document.querySelector("form"),
+statusTxt = form.querySelector(".button-area span");
+form.onsubmit = (e)=>{
+  e.preventDefault();
+  statusTxt.style.color = "#0D6EFD";
+  statusTxt.style.display = "block";
+  statusTxt.innerText = "Sending your message...";
+  form.classList.add("disabled");
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "message.php", true);
+  xhr.onload = ()=>{
+    if(xhr.readyState == 4 && xhr.status == 200){
+      let response = xhr.response;
+      if(response.indexOf("required") != -1 || response.indexOf("valid") != -1 || response.indexOf("failed") != -1){
+        statusTxt.style.color = "red";
+      }else{
+        form.reset();
+        setTimeout(()=>{
+          statusTxt.style.display = "none";
+        }, 3000);
+      }
+      statusTxt.innerText = response;
+      form.classList.remove("disabled");
+    }
+  }
+  let formData = new FormData(form);
+  xhr.send(formData);
+}
+
+//Dark Mode
+
+const chk = document.getElementById('chk')
+
+chk.addEventListener('change', () => {
+  document.body.classList.toggle('dark')
+})
+
+// Esconder div texto
+const tecnologias = document.querySelectorAll('.hard-skills i');
+const tooltip = document.querySelectorAll('.text-hidden');
 
 function showToolTip(index) {
   tooltip.forEach((item) => {
@@ -13,74 +51,3 @@ tecnologias.forEach((item, index) => {
     showToolTip(index);
   });
 });
-
-class HoverBox {
-  constructor(el) {
-    this.el = el;
-    this.hover = false;
-    this.calculatePosition();
-    this.attachEventsListener();
-  }
-  
-  attachEventsListener() {
-    window.addEventListener('mousemove', e => this.onMouseMove(e));
-    window.addEventListener('resize', e => this.calculatePosition(e));
-  }
-  
-  calculatePosition() {
-    gsap.set(this.el, {
-      x: 0,
-      y: 0,
-      scale: 1
-    });
-    const box = this.el.getBoundingClientRect();
-    this.x = box.left + (box.width * 0.5);
-    this.y = box.top + (box.height * 0.5);
-    this.width = box.width;
-    this.height = box.height;
-  }
-  
-  onMouseMove(e) {
-    let hover = false;
-    let hoverArea = (this.hover ? 0.7 : 0.5);
-    let x = e.clientX - this.x;
-    let y = e.clientY - this.y;
-    let distance = Math.sqrt( x*x + y*y );
-    if (distance < (this.width * hoverArea)) {
-       hover = true;
-        if (!this.hover) {
-          this.hover = true;
-        }
-        this.onHover(e.clientX, e.clientY);
-    }
-    
-    if(!hover && this.hover) {
-      this.onLeave();
-      this.hover = false;
-    }
-  }
-  
-  onHover(x, y) {
-    gsap.to(this.el,  {
-      x: (x - this.x) * 0.4,
-      y: (y - this.y) * 0.4,
-      scale: 1.15,
-      ease: 'power2.out',
-      duration: 0.4
-    });
-    this.el.style.zIndex = 10;
-  }
-  onLeave() {
-    gsap.to(this.el, {
-      x: 0,
-      y: 0,
-      scale: 1,
-      ease: 'elastic.out(1.2, 0.4)',
-      duration: 0.7
-    });
-    this.el.style.zIndex = 1;
-  }
-}
-
-const box = document.querySelector('.box');
-new HoverBox(box);
