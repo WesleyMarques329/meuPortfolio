@@ -16,7 +16,7 @@ Além de apresentar informações sobre mim e minhas habilidades, destaquei algu
 ## 📲 Layout
 <hr>
 
-![layout](./layout.png)
+![layout](public/layout.png)
 
 <br>
 <br>
